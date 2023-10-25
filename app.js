@@ -19,20 +19,29 @@ function startTime() {
         session = "PM";
     }
     
-    m = checkTime(m);
-    s = checkTime(s);
+    // h = checkTime(h);
+    // m = checkTime(m);
+    // s = checkTime(s);
+    //! padStart ile iki basamkli olmasini istiyoruz degilse basina koymak istedigimiz rakami belirliyoruz
+    h = h.toString().padStart(2, "0");
+    m = m.toString().padStart(2, "0");
+    s = s.toString().padStart(2, "0");
 
     document.getElementById('txt').innerHTML = h + ":" + m + ":" + s + " " + session;
 
     // her 1 saniyede bir kendini tekrarlamasını sağladim, böylece saati her saniye güncelliyorum
-    setTimeout(startTime, 1000);
+    // setTimeout(startTime, 1000);
 }
+
+// startTime()
+
 
 // Bu fonksiyon ile verilen değerin 10'dan küçük olup olmadığını kontrol ediyorum ve gerektiğinde başına sıfır ekliyorum
 
-function checkTime(i) {
-    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-    return i;
-}
+// function checkTime(i) {
+//     if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+//     return i;
+// }
 
-startTime()
+
+setInterval(startTime, 1000)
